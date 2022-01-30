@@ -4,7 +4,9 @@ fn main() {
     let width = read_uint32("Digite a largura do retangulo");
     let height = read_uint32("Digite a altura do retangulo");
 
-    println!("A área do retangulo é {}.", area(width, height));
+    let rect1 = (width, height);
+
+    println!("A área do retangulo é {}.", area(rect1));
 }
 
 fn read_uint32(msg: &str) -> u32 {
@@ -21,6 +23,6 @@ fn read_uint32(msg: &str) -> u32 {
     }
 }
 
-fn area(width: u32, height: u32) -> u32 {
-    width * height
+fn area(dimensions: (u32, u32)) -> u32 {
+    dimensions.0 * dimensions.1
 }
