@@ -9,15 +9,30 @@ impl Rectangle {
     fn area(&self) -> u32 {
         self.width * self.height
     }
+
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width >= other.width && self.height >= other.height
+    }
 }
 
 fn main() {
-    let width = read_uint32("Digite a largura do retangulo");
-    let height = read_uint32("Digite a altura do retangulo");
+    let width = read_uint32("Digite a largura do retângulo");
+    let height = read_uint32("Digite a altura do retângulo");
 
     let rect1 = Rectangle { width, height };
 
-    println!("A área do retangulo é {}.", rect1.area());
+    println!("A área do retângulo é {}.", rect1.area());
+
+    let hectare = Rectangle {
+        width: 100,
+        height: 100,
+    };
+
+    if hectare.can_hold(&rect1) {
+        println!("Seu retângulo cabe em um quadrado 100x100.");
+    } else {
+        println!("Seu retângulo NÃO cabe em um quadrado 100x100.");
+    }
 }
 
 fn read_uint32(msg: &str) -> u32 {
