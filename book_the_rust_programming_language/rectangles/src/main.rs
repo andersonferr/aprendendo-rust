@@ -5,13 +5,19 @@ struct Rectangle {
     height: u32,
 }
 
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
 fn main() {
     let width = read_uint32("Digite a largura do retangulo");
     let height = read_uint32("Digite a altura do retangulo");
 
-    let rect1 = Rectangle{width, height};
+    let rect1 = Rectangle { width, height };
 
-    println!("A área do retangulo é {}.", area(&rect1));
+    println!("A área do retangulo é {}.", rect1.area());
 }
 
 fn read_uint32(msg: &str) -> u32 {
@@ -26,8 +32,4 @@ fn read_uint32(msg: &str) -> u32 {
 
         println!("Entrada inválida!");
     }
-}
-
-fn area(rectangle: &Rectangle) -> u32 {
-    rectangle.width * rectangle.height
 }
