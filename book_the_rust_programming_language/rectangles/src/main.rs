@@ -6,6 +6,13 @@ struct Rectangle {
 }
 
 impl Rectangle {
+    fn square(size: u32) -> Rectangle {
+        Rectangle {
+            width: size,
+            height: size,
+        }
+    }
+
     fn area(&self) -> u32 {
         self.width * self.height
     }
@@ -23,10 +30,7 @@ fn main() {
 
     println!("A área do retângulo é {}.", rect1.area());
 
-    let hectare = Rectangle {
-        width: 100,
-        height: 100,
-    };
+    let hectare = Rectangle::square(100);
 
     if hectare.can_hold(&rect1) {
         println!("Seu retângulo cabe em um quadrado 100x100.");
