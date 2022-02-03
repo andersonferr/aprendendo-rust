@@ -1,6 +1,6 @@
 use std::{collections::HashMap, io, process};
 
-fn read_line(msg: &String) -> String {
+fn read_line(msg: &str) -> String {
     println!("{}:", msg);
     let mut line = String::new();
     let res = io::stdin().read_line(&mut line);
@@ -20,22 +20,21 @@ fn read_line(msg: &String) -> String {
 }
 
 fn add_department(dep: &mut HashMap<String, Vec<String>>) {
-    let department = read_line(&String::from("Por favor, digite o nome do departamento"));
+    let department = read_line("Por favor, digite o nome do departamento");
     if !dep.contains_key(&department) {
         dep.insert(department, Vec::new());
     } else {
         println!("Departamento já existe!");
     }
-    
     println!();
 }
 
 fn add_emploeet_to_department(dep: &mut HashMap<String, Vec<String>>) {
-    let department = read_line(&"Digite o nome do departamento".to_string());
+    let department = read_line("Digite o nome do departamento");
 
     match dep.get_mut(&department) {
         Some(emploees) => {
-            let emploee = read_line(&"Digite o nome do funcionário".to_string());
+            let emploee = read_line("Digite o nome do funcionário");
             emploees.push(emploee);
         }
 
@@ -76,9 +75,7 @@ fn main() {
         println!();
 
         loop {
-            let option = read_line(&String::from(
-                "Por favor selecione o número da opção desejada",
-            ));
+            let option = read_line("Por favor selecione o número da opção desejada");
 
             if let Ok(option) = option.parse() {
                 match option {
